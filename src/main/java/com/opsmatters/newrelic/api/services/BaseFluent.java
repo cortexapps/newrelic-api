@@ -39,6 +39,7 @@ import com.opsmatters.newrelic.api.model.applications.ApplicationHost;
 import com.opsmatters.newrelic.api.model.applications.ApplicationInstance;
 import com.opsmatters.newrelic.api.model.applications.BrowserApplication;
 import com.opsmatters.newrelic.api.model.applications.MobileApplication;
+import com.opsmatters.newrelic.api.model.graphql.GraphQLResponse;
 import com.opsmatters.newrelic.api.model.transactions.KeyTransaction;
 import com.opsmatters.newrelic.api.model.plugins.Plugin;
 import com.opsmatters.newrelic.api.model.plugins.PluginComponent;
@@ -164,6 +165,8 @@ public class BaseFluent
 
     protected static final GenericType<Dashboard> DASHBOARD = new GenericType<Dashboard>(){};
     protected static final GenericType<Collection<Dashboard>> DASHBOARDS = new GenericType<Collection<Dashboard>>(){};
+
+    protected static final GenericType<GraphQLResponse> GRAPH_QL = new GenericType<GraphQLResponse>(){};
 
     protected HttpContext HTTP;
     private NewRelicClient client;

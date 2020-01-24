@@ -38,6 +38,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
+import com.opsmatters.newrelic.api.httpclient.deserializers.graphql.GraphQLResponseDeserializer;
+import com.opsmatters.newrelic.api.httpclient.serializers.graphql.GraphQLResponseSerializer;
 import com.opsmatters.newrelic.api.model.ErrorResponse;
 import com.opsmatters.newrelic.api.model.alerts.AlertIncident;
 import com.opsmatters.newrelic.api.model.alerts.AlertViolation;
@@ -56,6 +58,7 @@ import com.opsmatters.newrelic.api.model.applications.ApplicationHost;
 import com.opsmatters.newrelic.api.model.applications.ApplicationInstance;
 import com.opsmatters.newrelic.api.model.applications.BrowserApplication;
 import com.opsmatters.newrelic.api.model.applications.MobileApplication;
+import com.opsmatters.newrelic.api.model.graphql.GraphQLResponse;
 import com.opsmatters.newrelic.api.model.transactions.KeyTransaction;
 import com.opsmatters.newrelic.api.model.plugins.Plugin;
 import com.opsmatters.newrelic.api.model.plugins.PluginComponent;
@@ -185,6 +188,7 @@ public final class GsonMessageBodyHandler implements MessageBodyWriter<Object>, 
     private static final Type PRODUCT_SUBSCRIPTIONS_TYPE = new TypeToken<Collection<ProductSubscription>>(){}.getType();
     private static final Type MONITORS_TYPE = new TypeToken<Collection<Monitor>>(){}.getType();
     private static final Type DASHBOARDS_TYPE = new TypeToken<Collection<Dashboard>>(){}.getType();
+    private static final Type GRAPH_QL_TYPE = new TypeToken<Collection<GraphQLResponse>>(){}.getType();
 
     private Gson gson;
 
@@ -268,6 +272,12 @@ public final class GsonMessageBodyHandler implements MessageBodyWriter<Object>, 
             builder.registerTypeAdapter(Dashboard.class, new DashboardSerializer());
             builder.registerTypeAdapter(Dashboard.class, new DashboardDeserializer());
             builder.registerTypeAdapter(DASHBOARDS_TYPE, new DashboardsDeserializer());
+            builder.registerTypeAdapter(DASHBOARDS_TYPE, new DashboardsDeserializer());
+            builder.registerTypeAdapter(GraphQLResponse.class, new GraphQLResponseSerializer());
+            builder.registerTypeAdapter(GraphQLResponse.class, new GraphQLResponseDeserializer());
+            builder.registerTypeAdapter(GRAPH_QL_TYPE, new GraphQLResponseSerializer());
+            builder.registerTypeAdapter(GRAPH_QL_TYPE, new GraphQLResponseDeserializer());
+
 
             gson = builder.create();
         }

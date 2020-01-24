@@ -55,7 +55,7 @@ public abstract class NewRelicClient
      * @param provider The HTTP client provider
      */
     public NewRelicClient(String hostname, int port, HttpClientProvider provider)
-    {    
+    {
         this.hostname = hostname;
         this.port = port;
         this.provider = provider;
@@ -66,7 +66,7 @@ public abstract class NewRelicClient
      * @return This object
      */
     public NewRelicClient initialize()
-    {    
+    {
         Client client = provider.getClient();
         String protocol = provider.useSsl() ? "https" : "http";
         httpContext = new HttpContext(client, protocol, hostname, port);
