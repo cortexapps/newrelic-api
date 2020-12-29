@@ -27,6 +27,8 @@ import java.lang.reflect.Type;
 import java.util.Collection;
 import java.util.logging.Logger;
 import java.util.logging.Level;
+import javax.annotation.Priority;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
@@ -151,8 +153,10 @@ import com.opsmatters.newrelic.api.httpclient.deserializers.insights.DashboardsD
  * 
  * @author Gerald Curley (opsmatters)
  */
+@Priority(0)
 @Provider
-@Produces(MediaType.APPLICATION_JSON)
+@Produces({MediaType.APPLICATION_JSON, "application/json; charset=utf-8"})
+@Consumes({MediaType.APPLICATION_JSON, "application/json; charset=utf-8"})
 public final class GsonMessageBodyHandler implements MessageBodyWriter<Object>, MessageBodyReader<Object>
 {
     private static final Logger logger = Logger.getLogger(GsonMessageBodyHandler.class.getName());
