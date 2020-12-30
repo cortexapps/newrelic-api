@@ -26,6 +26,7 @@ public class GraphQLResponse {
     public class Actor {
         private Account account;
         private Entity entity;
+        private List<Entity> entities;
         private EntitySearch entitySearch;
 
         public Account getAccount() {
@@ -50,6 +51,14 @@ public class GraphQLResponse {
 
         public void setEntitySearch(EntitySearch entitySearch) {
             this.entitySearch = entitySearch;
+        }
+
+        public List<Entity> getEntities() {
+            return entities;
+        }
+
+        public void setEntities(List<Entity> entities) {
+            this.entities = entities;
         }
     }
 
