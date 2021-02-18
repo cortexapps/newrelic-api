@@ -104,11 +104,11 @@
             </goals>
             <configuration>
               <tasks>
-                <mkdir dir="${project.build.directory}" />
+                <mkdir dir="${project.build.directory}"/>
                 <tstamp>
-                  <format property="TODAY" pattern="dd-MM-yyyy HH:mm" timezone="Europe/London" /> 
+                  <format property="TODAY" pattern="dd-MM-yyyy HH:mm" timezone="Europe/London"/> 
                 </tstamp>
-                <property file="${basedir}/src/main/resources/build.number" />
+                <property file="${basedir}/src/main/resources/build.number"/>
                 <echo file="${basedir}/target/filter.properties">build.number=${build.number}
 built.on=${TODAY}
                 </echo>
@@ -283,7 +283,7 @@ built.on=${TODAY}
 <dependency>
   <groupId>com.google.guava</groupId>
   <artifactId>guava</artifactId>
-  <version>23.0</version>
+  <version>23.6.1-jre</version>
     <exclusions>
       <exclusion>
         <groupId>com.google.code.findbugs</groupId>
