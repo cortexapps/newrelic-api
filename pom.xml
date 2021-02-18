@@ -104,11 +104,11 @@
             </goals>
             <configuration>
               <tasks>
-                <mkdir dir="${project.build.directory}" />
+                <mkdir dir="${project.build.directory}"/>
                 <tstamp>
-                  <format property="TODAY" pattern="dd-MM-yyyy HH:mm" timezone="Europe/London" /> 
+                  <format property="TODAY" pattern="dd-MM-yyyy HH:mm" timezone="Europe/London"/> 
                 </tstamp>
-                <property file="${basedir}/src/main/resources/build.number" />
+                <property file="${basedir}/src/main/resources/build.number"/>
                 <echo file="${basedir}/target/filter.properties">build.number=${build.number}
 built.on=${TODAY}
                 </echo>
@@ -277,7 +277,7 @@ built.on=${TODAY}
 <dependency>
   <groupId>com.google.code.gson</groupId>
   <artifactId>gson</artifactId>
-  <version>2.8.2</version>
+  <version>2.8.6</version>
 </dependency>
 
 <dependency>
