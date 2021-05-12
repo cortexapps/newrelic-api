@@ -22,11 +22,11 @@ import javax.ws.rs.client.ClientRequestFilter;
 
 /**
  * Filter to attach an API key used for authentication.
- * 
+ *
  * @author Gerald Curley (opsmatters)
  */
 public class ApiKeyFilter implements ClientRequestFilter
-{ 
+{
     private String apikey;
 
     /**
@@ -37,14 +37,14 @@ public class ApiKeyFilter implements ClientRequestFilter
     {
         this.apikey = apikey;
     }
-   
+
     /**
      * Adds the API key to the client request.
      * @param request The client request
      */
     public void filter(ClientRequestContext request) throws IOException
     {
-        if(!request.getHeaders().containsKey("X-Api-Key"))
-            request.getHeaders().add("X-Api-Key", this.apikey);
-    } 
+        if(!request.getHeaders().containsKey("Api-Key"))
+            request.getHeaders().add("Api-Key", this.apikey);
+    }
 }
