@@ -7,11 +7,11 @@ import java.util.List;
  *
  * @author Nikhil Unni (nikhilunni)
  */
-public class GraphQLResponse {
+public class EntityLookupResponse {
 
     private Actor actor;
 
-    public GraphQLResponse() {
+    public EntityLookupResponse() {
     }
 
     public Actor getActor() {

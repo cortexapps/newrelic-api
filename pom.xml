@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.brainera</groupId>
   <artifactId>newrelic-api</artifactId>
-  <version>1.0.17</version>
+  <version>1.0.18</version>
   <packaging>jar</packaging>
   <name>New Relic API</name>
   <description>
@@ -75,8 +75,8 @@
       <artifactId>maven-compiler-plugin</artifactId>
       <version>3.3</version>
       <configuration>
-        <source>1.7</source>
-        <target>1.7</target>
+        <source>8</source>
+        <target>8</target>
         <fork>true</fork>
         <debug>on</debug>
         <meminitial>128m</meminitial>

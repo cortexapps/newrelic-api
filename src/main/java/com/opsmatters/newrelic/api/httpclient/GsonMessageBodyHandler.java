@@ -40,8 +40,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
-import com.opsmatters.newrelic.api.httpclient.deserializers.graphql.GraphQLResponseDeserializer;
-import com.opsmatters.newrelic.api.httpclient.serializers.graphql.GraphQLResponseSerializer;
+import com.opsmatters.newrelic.api.httpclient.deserializers.graphql.*;
+import com.opsmatters.newrelic.api.httpclient.serializers.graphql.GraphQLRequestSerializer;
 import com.opsmatters.newrelic.api.model.ErrorResponse;
 import com.opsmatters.newrelic.api.model.alerts.AlertIncident;
 import com.opsmatters.newrelic.api.model.alerts.AlertViolation;
@@ -60,7 +60,7 @@ import com.opsmatters.newrelic.api.model.applications.ApplicationHost;
 import com.opsmatters.newrelic.api.model.applications.ApplicationInstance;
 import com.opsmatters.newrelic.api.model.applications.BrowserApplication;
 import com.opsmatters.newrelic.api.model.applications.MobileApplication;
-import com.opsmatters.newrelic.api.model.graphql.GraphQLResponse;
+import com.opsmatters.newrelic.api.model.graphql.*;
 import com.opsmatters.newrelic.api.model.transactions.KeyTransaction;
 import com.opsmatters.newrelic.api.model.plugins.Plugin;
 import com.opsmatters.newrelic.api.model.plugins.PluginComponent;
@@ -192,7 +192,12 @@ public final class GsonMessageBodyHandler implements MessageBodyWriter<Object>, 
     private static final Type PRODUCT_SUBSCRIPTIONS_TYPE = new TypeToken<Collection<ProductSubscription>>(){}.getType();
     private static final Type MONITORS_TYPE = new TypeToken<Collection<Monitor>>(){}.getType();
     private static final Type DASHBOARDS_TYPE = new TypeToken<Collection<Dashboard>>(){}.getType();
-    private static final Type GRAPH_QL_TYPE = new TypeToken<Collection<GraphQLResponse>>(){}.getType();
+    private static final Type GRAPH_QL_REQUEST_TYPE = new TypeToken<Collection<GraphQLRequest>>(){}.getType();
+    private static final Type ENTITY_LOOKUP_TYPE = new TypeToken<Collection<EntityLookupResponse>>(){}.getType();
+    private static final Type ACCOUNT_LOOKUP_TYPE = new TypeToken<Collection<AccountLookupResponse>>(){}.getType();
+    private static final Type NRQL_SUCCESS_TYPE = new TypeToken<Collection<NrqlSuccessResponse>>(){}.getType();
+    private static final Type NRQL_ERROR_TYPE = new TypeToken<Collection<NrqlErrorResponse>>(){}.getType();
+    private static final Type NRQL_QUERY_TYPE = new TypeToken<Collection<NrqlQueryResponse>>(){}.getType();
 
     private Gson gson;
 
@@ -277,11 +282,18 @@ public final class GsonMessageBodyHandler implements MessageBodyWriter<Object>, 
             builder.registerTypeAdapter(Dashboard.class, new DashboardDeserializer());
             builder.registerTypeAdapter(DASHBOARDS_TYPE, new DashboardsDeserializer());
             builder.registerTypeAdapter(DASHBOARDS_TYPE, new DashboardsDeserializer());
-            builder.registerTypeAdapter(GraphQLResponse.class, new GraphQLResponseSerializer());
-            builder.registerTypeAdapter(GraphQLResponse.class, new GraphQLResponseDeserializer());
-            builder.registerTypeAdapter(GRAPH_QL_TYPE, new GraphQLResponseSerializer());
-            builder.registerTypeAdapter(GRAPH_QL_TYPE, new GraphQLResponseDeserializer());
-
+            builder.registerTypeAdapter(GraphQLRequest.class, new GraphQLRequestSerializer());
+            builder.registerTypeAdapter(GRAPH_QL_REQUEST_TYPE, new GraphQLRequestSerializer());
+            builder.registerTypeAdapter(EntityLookupResponse.class, new EntityLookupResponseDeserializer());
+            builder.registerTypeAdapter(ENTITY_LOOKUP_TYPE, new EntityLookupResponseDeserializer());
+            builder.registerTypeAdapter(AccountLookupResponse.class, new AccountLookupResponseDeserializer());
+            builder.registerTypeAdapter(ACCOUNT_LOOKUP_TYPE, new EntityLookupResponseDeserializer());
+            builder.registerTypeAdapter(NrqlSuccessResponse.class, new NrqlSuccessResponseDeserializer());
+            builder.registerTypeAdapter(NRQL_SUCCESS_TYPE, new NrqlSuccessResponseDeserializer());
+            builder.registerTypeAdapter(NrqlErrorResponse.class, new NrqlErrorResponseDeserializer());
+            builder.registerTypeAdapter(NRQL_ERROR_TYPE, new NrqlErrorResponseDeserializer());
+            builder.registerTypeAdapter(NrqlQueryResponse.class, new NrqlQueryResponseDeserializer());
+            builder.registerTypeAdapter(NRQL_QUERY_TYPE, new NrqlQueryResponseDeserializer());
 
             gson = builder.create();
         }
