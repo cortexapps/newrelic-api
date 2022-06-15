@@ -22,6 +22,7 @@ import java.util.Collection;
 import java.util.logging.Logger;
 import javax.ws.rs.core.GenericType;
 import com.opsmatters.newrelic.api.NewRelicClient;
+import com.opsmatters.newrelic.api.model.ErrorResponse;
 import com.opsmatters.newrelic.api.model.alerts.AlertIncident;
 import com.opsmatters.newrelic.api.model.alerts.AlertViolation;
 import com.opsmatters.newrelic.api.model.alerts.AlertEvent;
@@ -39,7 +40,10 @@ import com.opsmatters.newrelic.api.model.applications.ApplicationHost;
 import com.opsmatters.newrelic.api.model.applications.ApplicationInstance;
 import com.opsmatters.newrelic.api.model.applications.BrowserApplication;
 import com.opsmatters.newrelic.api.model.applications.MobileApplication;
-import com.opsmatters.newrelic.api.model.graphql.GraphQLResponse;
+import com.opsmatters.newrelic.api.model.graphql.AccountLookupResponse;
+import com.opsmatters.newrelic.api.model.graphql.EntityLookupResponse;
+import com.opsmatters.newrelic.api.model.graphql.NrqlQueryResponse;
+import com.opsmatters.newrelic.api.model.graphql.NrqlSuccessResponse;
 import com.opsmatters.newrelic.api.model.transactions.KeyTransaction;
 import com.opsmatters.newrelic.api.model.plugins.Plugin;
 import com.opsmatters.newrelic.api.model.plugins.PluginComponent;
@@ -166,7 +170,11 @@ public class BaseFluent
     protected static final GenericType<Dashboard> DASHBOARD = new GenericType<Dashboard>(){};
     protected static final GenericType<Collection<Dashboard>> DASHBOARDS = new GenericType<Collection<Dashboard>>(){};
 
-    protected static final GenericType<GraphQLResponse> GRAPH_QL = new GenericType<GraphQLResponse>(){};
+    protected static final GenericType<EntityLookupResponse> ENTITY_LOOKUP = new GenericType<EntityLookupResponse>(){};
+    protected static final GenericType<AccountLookupResponse> ACCOUNT_LOOKUP = new GenericType<AccountLookupResponse>(){};
+    protected static final GenericType<NrqlQueryResponse> NRQL_QUERY = new GenericType<NrqlQueryResponse>(){};
+
+    protected static final GenericType<ErrorResponse> ERROR = new GenericType<ErrorResponse>(){};
 
     protected HttpContext HTTP;
     private NewRelicClient client;

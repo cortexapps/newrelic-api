@@ -8,7 +8,7 @@ import com.opsmatters.newrelic.api.services.GraphQLService;
 import java.util.logging.Logger;
 
 /**
- * Client used to invoke NerdGraph operations using Graph QL.
+ * Client used to invoke NerdGraph operations using GraphQL.
  *
  * @author Nikhil Unni (cortexapps)
  */
