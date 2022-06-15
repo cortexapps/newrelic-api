@@ -18,7 +18,7 @@ public class GraphQLService extends BaseFluent {
     /**
      * Constructor that takes a http context and API client.
      * @param httpContext The set of HTTP operations
-     * @param client The client used to invoke the Graph QL operations
+     * @param client The client used to invoke the GraphQL operations
      */
     public GraphQLService(HttpContext httpContext, NewRelicClient client)
     {

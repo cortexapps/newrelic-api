@@ -3,7 +3,7 @@ package com.opsmatters.newrelic.api.model.graphql;
 import java.util.List;
 
 /**
- * Represents Graph QL response data.
+ * Represents GraphQL response data.
  *
  * @author Nikhil Unni (nikhilunni)
  */
