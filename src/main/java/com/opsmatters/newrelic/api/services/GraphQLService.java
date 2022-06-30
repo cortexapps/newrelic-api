@@ -37,6 +37,17 @@ public class GraphQLService extends BaseFluent {
     }
 
     /**
+     * Returns the EntityAccountResponse
+     * @param entityName The entity name to search for
+     * @return The account data
+     */
+    public Optional<EntityAccountLookupResponse> searchEntityAccounts(String entityName)
+    {
+        GraphQLRequest request = GraphQLRequest.from(constructEntityAccountLookupQuery(entityName));
+        return HTTP.POST("/graphql", request, ENTITY_ACCOUNT_LOOKUP);
+    }
+
+    /**
      * Returns the GraphQL response
      * @return The query data
      */
@@ -63,6 +74,22 @@ public class GraphQLService extends BaseFluent {
                 "    account(id: " + accountId + ") {" +
                 "      nrql(query: \"" + query + "\") {" +
                 "        results" +
+                "      }" +
+                "    }" +
+                "  }" +
+                "}";
+    }
+
+    private String constructEntityAccountLookupQuery(String entityName) {
+        return "{" +
+                "  actor {" +
+                "    entitySearch(query: \"name = '" + entityName + "'\") {" +
+                "      results {" +
+                "        entities {" +
+                "          account {" +
+                "            id" +
+                "          }" +
+                "        }" +
                 "      }" +
                 "    }" +
                 "  }" +

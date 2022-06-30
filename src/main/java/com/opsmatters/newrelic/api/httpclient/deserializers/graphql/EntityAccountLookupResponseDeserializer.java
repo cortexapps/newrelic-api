@@ -1,16 +1,22 @@
 package com.opsmatters.newrelic.api.httpclient.deserializers.graphql;
 
-import com.google.gson.*;
+import com.google.gson.Gson;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.opsmatters.newrelic.api.model.graphql.EntityAccountLookupResponse;
 import com.opsmatters.newrelic.api.model.graphql.EntityLookupResponse;
 
 import java.lang.reflect.Type;
 
 /**
- * Deserializer class for EntityLookupResponse.
+ * Deserializer class for EntityAccountLookupResponse.
  *
  * @author Nikhil Unni (nikhilunni)
  */
-public class EntityLookupResponseDeserializer implements JsonDeserializer<EntityLookupResponse>
+public class EntityAccountLookupResponseDeserializer implements JsonDeserializer<EntityAccountLookupResponse>
 {
     private static Gson gson = new Gson();
 
@@ -22,13 +28,13 @@ public class EntityLookupResponseDeserializer implements JsonDeserializer<Entity
      * @return The GraphQL response
      */
     @Override
-    public EntityLookupResponse deserialize(JsonElement element, Type type, JsonDeserializationContext context)
+    public EntityAccountLookupResponse deserialize(JsonElement element, Type type, JsonDeserializationContext context)
             throws JsonParseException
     {
         JsonObject obj = element.getAsJsonObject();
         JsonElement data = obj.get("data");
         if(data != null && data.isJsonObject())
-            return gson.fromJson(data, EntityLookupResponse.class);
+            return gson.fromJson(data, EntityAccountLookupResponse.class);
         return null;
     }
 }
