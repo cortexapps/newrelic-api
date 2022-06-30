@@ -59,6 +59,7 @@ import com.opsmatters.newrelic.api.httpclient.deserializers.applications.MobileA
 import com.opsmatters.newrelic.api.httpclient.deserializers.deployments.DeploymentDeserializer;
 import com.opsmatters.newrelic.api.httpclient.deserializers.deployments.DeploymentsDeserializer;
 import com.opsmatters.newrelic.api.httpclient.deserializers.graphql.AccountLookupResponseDeserializer;
+import com.opsmatters.newrelic.api.httpclient.deserializers.graphql.EntityAccountLookupResponseDeserializer;
 import com.opsmatters.newrelic.api.httpclient.deserializers.graphql.EntityLookupResponseDeserializer;
 import com.opsmatters.newrelic.api.httpclient.deserializers.graphql.NrqlErrorResponseDeserializer;
 import com.opsmatters.newrelic.api.httpclient.deserializers.graphql.NrqlQueryResponseDeserializer;
@@ -122,6 +123,7 @@ import com.opsmatters.newrelic.api.model.applications.BrowserApplication;
 import com.opsmatters.newrelic.api.model.applications.MobileApplication;
 import com.opsmatters.newrelic.api.model.deployments.Deployment;
 import com.opsmatters.newrelic.api.model.graphql.AccountLookupResponse;
+import com.opsmatters.newrelic.api.model.graphql.EntityAccountLookupResponse;
 import com.opsmatters.newrelic.api.model.graphql.EntityLookupResponse;
 import com.opsmatters.newrelic.api.model.graphql.GraphQLRequest;
 import com.opsmatters.newrelic.api.model.graphql.NrqlErrorResponse;
@@ -204,6 +206,7 @@ public final class GsonMessageBodyHandler implements MessageBodyWriter<Object>, 
     private static final Type DASHBOARDS_TYPE = new TypeToken<Collection<Dashboard>>(){}.getType();
     private static final Type GRAPH_QL_REQUEST_TYPE = new TypeToken<Collection<GraphQLRequest>>(){}.getType();
     private static final Type ENTITY_LOOKUP_TYPE = new TypeToken<Collection<EntityLookupResponse>>(){}.getType();
+    private static final Type ENTITY_ACCOUNT_LOOKUP_TYPE = new TypeToken<Collection<EntityAccountLookupResponse>>(){}.getType();
     private static final Type ACCOUNT_LOOKUP_TYPE = new TypeToken<Collection<AccountLookupResponse>>(){}.getType();
     private static final Type NRQL_SUCCESS_TYPE = new TypeToken<Collection<NrqlSuccessResponse>>(){}.getType();
     private static final Type NRQL_ERROR_TYPE = new TypeToken<Collection<NrqlErrorResponse>>(){}.getType();
@@ -298,6 +301,8 @@ public final class GsonMessageBodyHandler implements MessageBodyWriter<Object>, 
             builder.registerTypeAdapter(ENTITY_LOOKUP_TYPE, new EntityLookupResponseDeserializer());
             builder.registerTypeAdapter(AccountLookupResponse.class, new AccountLookupResponseDeserializer());
             builder.registerTypeAdapter(ACCOUNT_LOOKUP_TYPE, new EntityLookupResponseDeserializer());
+            builder.registerTypeAdapter(ENTITY_ACCOUNT_LOOKUP_TYPE, new EntityAccountLookupResponseDeserializer());
+            builder.registerTypeAdapter(EntityAccountLookupResponse.class, new EntityAccountLookupResponseDeserializer());
             builder.registerTypeAdapter(NrqlSuccessResponse.class, new NrqlSuccessResponseDeserializer());
             builder.registerTypeAdapter(NRQL_SUCCESS_TYPE, new NrqlSuccessResponseDeserializer());
             builder.registerTypeAdapter(NrqlErrorResponse.class, new NrqlErrorResponseDeserializer());

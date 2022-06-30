@@ -41,6 +41,7 @@ import com.opsmatters.newrelic.api.model.applications.ApplicationInstance;
 import com.opsmatters.newrelic.api.model.applications.BrowserApplication;
 import com.opsmatters.newrelic.api.model.applications.MobileApplication;
 import com.opsmatters.newrelic.api.model.graphql.AccountLookupResponse;
+import com.opsmatters.newrelic.api.model.graphql.EntityAccountLookupResponse;
 import com.opsmatters.newrelic.api.model.graphql.EntityLookupResponse;
 import com.opsmatters.newrelic.api.model.graphql.NrqlQueryResponse;
 import com.opsmatters.newrelic.api.model.graphql.NrqlSuccessResponse;
@@ -171,7 +172,9 @@ public class BaseFluent
     protected static final GenericType<Collection<Dashboard>> DASHBOARDS = new GenericType<Collection<Dashboard>>(){};
 
     protected static final GenericType<EntityLookupResponse> ENTITY_LOOKUP = new GenericType<EntityLookupResponse>(){};
+    protected static final GenericType<EntityAccountLookupResponse> ENTITY_ACCOUNT_LOOKUP = new GenericType<EntityAccountLookupResponse>(){};
     protected static final GenericType<AccountLookupResponse> ACCOUNT_LOOKUP = new GenericType<AccountLookupResponse>(){};
+
     protected static final GenericType<NrqlQueryResponse> NRQL_QUERY = new GenericType<NrqlQueryResponse>(){};
 
     protected static final GenericType<ErrorResponse> ERROR = new GenericType<ErrorResponse>(){};
