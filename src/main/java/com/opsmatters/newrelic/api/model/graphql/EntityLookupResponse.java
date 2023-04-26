@@ -87,18 +87,38 @@ public class EntityLookupResponse {
     }
 
     public class Entity {
-        private List<Relationship> relationships;
+        private String name;
+        private RelatedEntities relatedEntities;
 
-        public List<Relationship> getRelationships() {
-            return relationships;
+        public String getName() {
+            return name;
         }
 
-        public void setRelationships(List<Relationship> relationships) {
-            this.relationships = relationships;
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public RelatedEntities getRelatedEntities() {
+            return relatedEntities;
+        }
+
+        public void setRelatedEntities(RelatedEntities relatedEntities) {
+            this.relatedEntities = relatedEntities;
         }
     }
 
-    public class Relationship {
+    public class RelatedEntities {
+        private List<RelatedEntitiesResults> results;
+        public List<RelatedEntitiesResults> getResults() {
+            return results;
+        }
+
+        public void setResults(List<RelatedEntitiesResults> results) {
+            this.results = results;
+        }
+    }
+
+    public class RelatedEntitiesResults {
         private Source source;
         private Source target;
 
