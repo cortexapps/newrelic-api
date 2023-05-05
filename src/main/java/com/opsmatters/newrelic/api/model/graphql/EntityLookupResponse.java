@@ -186,6 +186,7 @@ public class EntityLookupResponse {
 
     public class Results {
         private List<EmbeddedEntity> entities;
+        private String nextCursor;
 
         public List<EmbeddedEntity> getEntities() {
             return entities;
@@ -193,6 +194,14 @@ public class EntityLookupResponse {
 
         public void setEntities(List<EmbeddedEntity> entities) {
             this.entities = entities;
+        }
+
+        public String getNextCursor() {
+            return nextCursor;
+        }
+
+        public void setNextCursor(String nextCursor) {
+            this.nextCursor = nextCursor;
         }
     }
 }
