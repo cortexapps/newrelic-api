@@ -20,7 +20,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Collection;
 import java.util.logging.Logger;
-import javax.ws.rs.core.GenericType;
+import jakarta.ws.rs.core.GenericType;
 import com.opsmatters.newrelic.api.NewRelicClient;
 import com.opsmatters.newrelic.api.model.ErrorResponse;
 import com.opsmatters.newrelic.api.model.alerts.AlertIncident;

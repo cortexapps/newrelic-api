@@ -17,7 +17,7 @@
 package com.opsmatters.newrelic.api;
 
 import java.util.logging.Logger;
-import javax.ws.rs.client.Client;
+import jakarta.ws.rs.client.Client;
 import com.opsmatters.newrelic.api.services.HttpContext;
 import com.opsmatters.newrelic.api.httpclient.HttpClientProvider;
 

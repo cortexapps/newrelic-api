@@ -16,7 +16,7 @@
 
 package com.opsmatters.newrelic.api.httpclient;
 
-import javax.ws.rs.client.Client;
+import jakarta.ws.rs.client.Client;
 
 /**
  * Interface for a HTTP client provider.  

@@ -19,7 +19,7 @@ package com.opsmatters.newrelic.api.services;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collection;
-import javax.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response;
 import com.google.common.base.Optional;
 import com.opsmatters.newrelic.api.NewRelicClient;
 import com.opsmatters.newrelic.api.model.synthetics.Monitor;

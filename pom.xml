@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.brainera</groupId>
   <artifactId>newrelic-api</artifactId>
-  <version>1.0.21</version>
+  <version>1.0.22</version>
   <packaging>jar</packaging>
   <name>New Relic API</name>
   <description>
@@ -242,7 +242,7 @@ built.on=${TODAY}
 <dependency>
     <groupId>org.glassfish.jersey.core</groupId>
     <artifactId>jersey-client</artifactId>
-    <version>2.26</version>
+    <version>3.1.1</version>
     <exclusions>
       <exclusion>
         <groupId>org.glassfish.hk2</groupId>
@@ -254,7 +254,7 @@ built.on=${TODAY}
 <dependency>
     <groupId>org.glassfish.jersey.inject</groupId>
     <artifactId>jersey-hk2</artifactId>
-    <version>2.26</version>
+    <version>3.1.1</version>
     <exclusions>
       <exclusion>
         <groupId>org.javassist</groupId>
