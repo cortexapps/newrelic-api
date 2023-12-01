@@ -83,6 +83,23 @@ public class ApplicationService extends BaseFluent
     }
 
     /**
+     * Returns the set of applications for the given name.
+     * @param names The names of the applications
+     * @return The set of applications
+     */
+    public Collection<Application> listByNames(List<String> names)
+    {
+        List<Application> ret = new ArrayList<Application>();
+        Collection<Application> applications = list();
+        for(Application application : applications)
+        {
+            if(names.contains(application.getName()))
+                ret.add(application);
+        }
+        return ret;
+    }
+
+    /**
      * Returns the application for the given application id.
      * @param applicationId The id for the application to return
      * @return The application

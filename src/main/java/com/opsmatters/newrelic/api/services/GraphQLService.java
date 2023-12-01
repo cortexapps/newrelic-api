@@ -7,6 +7,7 @@ import com.opsmatters.newrelic.api.model.ErrorDetail;
 import com.opsmatters.newrelic.api.model.ErrorDetails;
 import com.opsmatters.newrelic.api.model.graphql.*;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -48,6 +49,17 @@ public class GraphQLService extends BaseFluent {
     }
 
     /**
+     * Returns the EntityAccountResponse
+     * @param entityNames The entity names to search for
+     * @return The account data
+     */
+    public Optional<EntityAccountLookupResponse> searchEntitiesAccounts(List<String> entityNames)
+    {
+        GraphQLRequest request = GraphQLRequest.from(constructEntitiesAccountLookupQuery(entityNames));
+        return HTTP.POST("/graphql", request, ENTITY_ACCOUNT_LOOKUP);
+    }
+
+    /**
      * Returns the GraphQL response
      * @return The query data
      */
@@ -84,6 +96,22 @@ public class GraphQLService extends BaseFluent {
         return "{" +
                 "  actor {" +
                 "    entitySearch(query: \"name = '" + entityName + "'\") {" +
+                "      results {" +
+                "        entities {" +
+                "          account {" +
+                "            id" +
+                "          }" +
+                "        }" +
+                "      }" +
+                "    }" +
+                "  }" +
+                "}";
+    }
+
+    private String constructEntitiesAccountLookupQuery(List<String> entityNames) {
+        return "{" +
+                "  actor {" +
+                "    entitySearch(query: \"name in (" + entityNames.stream().collect(Collectors.joining(",", "'", "'")) + ")\") {" +
                 "      results {" +
                 "        entities {" +
                 "          account {" +
