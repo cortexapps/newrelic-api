@@ -154,6 +154,9 @@ public class EntityLookupResponse {
     public class EmbeddedEntity {
         private String name;
         private String guid;
+        private List<EmbeddedEntityTag> tags;
+        private Long accountId;
+        private Long applicationId;
 
         public String getGuid() {
             return guid;
@@ -170,6 +173,31 @@ public class EntityLookupResponse {
         public void setName(String name) {
             this.name = name;
         }
+
+        public List<EmbeddedEntityTag> getTags() { return tags; }
+
+        public void setTags(List<EmbeddedEntityTag> tags) { this.tags = tags; }
+
+        public Long getAccountId() { return accountId; }
+
+        public void setAccountId(Long accountId) { this.accountId = accountId; }
+
+        public Long getApplicationId() { return applicationId; }
+
+        public void setApplicationId(Long applicationId) { this.applicationId = applicationId; }
+    }
+
+    public class EmbeddedEntityTag {
+        private String key;
+        private List<String> values;
+
+        public String getKey() { return key; }
+
+        public void setKey(String key) { this.key = key; }
+
+        public List<String> getValues() { return values; }
+
+        public void setValues(List<String> values) { this.values = values; }
     }
 
     public class EntitySearch {
