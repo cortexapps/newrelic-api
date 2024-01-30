@@ -1,7 +1,6 @@
 package com.opsmatters.newrelic.api.model.graphql;
 
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Represents Graph QL response data.
