@@ -44,7 +44,7 @@ import com.opsmatters.newrelic.api.model.graphql.AccountLookupResponse;
 import com.opsmatters.newrelic.api.model.graphql.EntityAccountLookupResponse;
 import com.opsmatters.newrelic.api.model.graphql.EntityLookupResponse;
 import com.opsmatters.newrelic.api.model.graphql.NrqlQueryResponse;
-import com.opsmatters.newrelic.api.model.graphql.NrqlSuccessResponse;
+import com.opsmatters.newrelic.api.model.graphql.SloDefinitionResponse;
 import com.opsmatters.newrelic.api.model.transactions.KeyTransaction;
 import com.opsmatters.newrelic.api.model.plugins.Plugin;
 import com.opsmatters.newrelic.api.model.plugins.PluginComponent;
@@ -66,8 +66,8 @@ import com.opsmatters.newrelic.api.model.Status;
 import com.opsmatters.newrelic.api.model.insights.Dashboard;
 
 /**
- * Provides the types and HTTP operations to be used with the API calls.  
- * 
+ * Provides the types and HTTP operations to be used with the API calls.
+ *
  * @author Gerald Curley (opsmatters)
  */
 public class BaseFluent
@@ -174,6 +174,7 @@ public class BaseFluent
     protected static final GenericType<EntityLookupResponse> ENTITY_LOOKUP = new GenericType<EntityLookupResponse>(){};
     protected static final GenericType<EntityAccountLookupResponse> ENTITY_ACCOUNT_LOOKUP = new GenericType<EntityAccountLookupResponse>(){};
     protected static final GenericType<AccountLookupResponse> ACCOUNT_LOOKUP = new GenericType<AccountLookupResponse>(){};
+    protected static final GenericType<SloDefinitionResponse> SLO_DEFINITION = new GenericType<SloDefinitionResponse>(){};
 
     protected static final GenericType<NrqlQueryResponse> NRQL_QUERY = new GenericType<NrqlQueryResponse>(){};
 
@@ -188,17 +189,17 @@ public class BaseFluent
      * @param client The set of API operations
      */
     public BaseFluent(HttpContext httpContext, NewRelicClient client)
-    {    
+    {
         this.HTTP = httpContext;
         this.client = client;
     }
-    
+
     /**
      * Returns the API client.
      * @return The API client
      */
     public NewRelicClient getClient()
-    {    
+    {
         return this.client;
     }
 
