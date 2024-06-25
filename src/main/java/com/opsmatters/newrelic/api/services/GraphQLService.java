@@ -155,6 +155,7 @@ public class GraphQLService extends BaseFluent {
                "    entities(guids: \"" + guid + "\") {" +
                "      serviceLevel {" +
                "        indicators {" +
+               "          guid" +
                "          name" +
                "          objectives {" +
                "            target" +

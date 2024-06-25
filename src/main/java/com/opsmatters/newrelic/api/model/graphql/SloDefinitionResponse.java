@@ -53,9 +53,18 @@ public class SloDefinitionResponse {
     }
 
     public class Indicator {
+        private String guid;
         private String name;
         private List<Objective> objectives;
         public ResultQueries resultQueries;
+
+        public String getGuid() {
+            return guid;
+        }
+
+        public void setGuid(String guid) {
+            this.guid = guid;
+        }
 
         public String getName() {
             return name;
