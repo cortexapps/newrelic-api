@@ -80,6 +80,17 @@ public class GraphQLService extends BaseFluent {
         return HTTP.POST("/graphql", request, NRQL_QUERY);
     }
 
+    /**
+     * Returns the SloDefinitionResponse
+     * @param newRelicEntityGuid The entity guid to search for
+     * @return The query data
+     */
+    public Optional<SloDefinitionResponse> searchSLODefinitions(String newRelicEntityGuid)
+    {
+        GraphQLRequest request = GraphQLRequest.from(constructSLODefinitionQuery(newRelicEntityGuid));
+        return HTTP.POST("/graphql", request, SLO_DEFINITION);
+    }
+
     private String constructNrqlQuery(int accountId, String query) {
         return "{" +
                 "  actor {" +
@@ -136,5 +147,34 @@ public class GraphQLService extends BaseFluent {
                 "    }" +
                 "  }" +
                 "}";
+    }
+
+    private String constructSLODefinitionQuery(String guid) {
+        return "{" +
+               "  actor {" +
+               "    entities(guids: \"" + guid + "\") {" +
+               "      serviceLevel {" +
+               "        indicators {" +
+               "          guid" +
+               "          name" +
+               "          objectives {" +
+               "            target" +
+               "            timeWindow {" +
+               "              rolling {" +
+               "                count" +
+               "                unit" +
+               "              }" +
+               "            }" +
+               "          }" +
+               "          resultQueries {" +
+               "            indicator {" +
+               "              nrql" +
+               "            }" +
+               "          }" +
+               "        }" +
+               "      }" +
+               "    }" +
+               "  }" +
+              "}";
     }
 }
