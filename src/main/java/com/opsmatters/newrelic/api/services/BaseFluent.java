@@ -45,6 +45,7 @@ import com.opsmatters.newrelic.api.model.graphql.EntityAccountLookupResponse;
 import com.opsmatters.newrelic.api.model.graphql.EntityLookupResponse;
 import com.opsmatters.newrelic.api.model.graphql.NrqlQueryResponse;
 import com.opsmatters.newrelic.api.model.graphql.SloDefinitionResponse;
+import com.opsmatters.newrelic.api.model.graphql.ThirdPartyMetricsResponse;
 import com.opsmatters.newrelic.api.model.transactions.KeyTransaction;
 import com.opsmatters.newrelic.api.model.plugins.Plugin;
 import com.opsmatters.newrelic.api.model.plugins.PluginComponent;
@@ -175,6 +176,7 @@ public class BaseFluent
     protected static final GenericType<EntityAccountLookupResponse> ENTITY_ACCOUNT_LOOKUP = new GenericType<EntityAccountLookupResponse>(){};
     protected static final GenericType<AccountLookupResponse> ACCOUNT_LOOKUP = new GenericType<AccountLookupResponse>(){};
     protected static final GenericType<SloDefinitionResponse> SLO_DEFINITION = new GenericType<SloDefinitionResponse>(){};
+    protected static final GenericType<ThirdPartyMetricsResponse> THIRD_PARTY_METRICS_RESPONSE = new GenericType<ThirdPartyMetricsResponse>(){};
 
     protected static final GenericType<NrqlQueryResponse> NRQL_QUERY = new GenericType<NrqlQueryResponse>(){};
 
