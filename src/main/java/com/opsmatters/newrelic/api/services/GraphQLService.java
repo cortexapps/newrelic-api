@@ -192,7 +192,7 @@ public class GraphQLService extends BaseFluent {
     private String constructThirdPartyMetrics(List<String> guids) {
         return "{" +
                "  actor {" +
-               "    entities(guids: [" + guids.stream().collect(Collectors.joining(",", "'", "'")) + "]) {" +
+               "    entities(guids: [" + guids.stream().collect(Collectors.joining(",", "\"", "\"")) + "]) {" +
                "      ... on ThirdPartyServiceEntity {" +
                "        guid" +
                "        name" +
