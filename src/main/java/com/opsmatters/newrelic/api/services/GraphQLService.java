@@ -91,6 +91,17 @@ public class GraphQLService extends BaseFluent {
         return HTTP.POST("/graphql", request, SLO_DEFINITION);
     }
 
+    /**
+     * Returns the ThirdPartyMetricsResponse
+     * @param guids The entity guid to search for
+     * @return The metrics data
+     */
+    public Optional<ThirdPartyMetricsResponse> searchThirdPartyMetrics(List<String> guids)
+    {
+        GraphQLRequest request = GraphQLRequest.from(constructThirdPartyMetrics(guids));
+        return HTTP.POST("/graphql", request, THIRD_PARTY_METRICS_RESPONSE);
+    }
+
     private String constructNrqlQuery(int accountId, String query) {
         return "{" +
                 "  actor {" +
@@ -175,6 +186,28 @@ public class GraphQLService extends BaseFluent {
                "      }" +
                "    }" +
                "  }" +
-              "}";
+               "}";
+    }
+
+    private String constructThirdPartyMetrics(List<String> guids) {
+        return "{" +
+               "  actor {" +
+               "    entities(guids: [" + guids.stream().collect(Collectors.joining(",", "\"", "\"")) + "]) {" +
+               "      ... on ThirdPartyServiceEntity {" +
+               "        guid" +
+               "        name" +
+               "        goldenMetrics {" +
+               "          metrics {" +
+               "            query" +
+               "            name" +
+               "            metricName" +
+               "            title" +
+               "            unit" +
+               "          }" +
+               "        }" +
+               "      }" +
+               "    }" +
+               "  }" +
+               "}";
     }
 }

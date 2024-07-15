@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.brainera</groupId>
   <artifactId>newrelic-api</artifactId>
-  <version>1.0.25</version>
+  <version>1.0.26</version>
   <packaging>jar</packaging>
   <name>New Relic API</name>
   <description>
@@ -103,7 +103,7 @@
               <goal>run</goal>
             </goals>
             <configuration>
-              <tasks>
+              <target>
                 <mkdir dir="${project.build.directory}" />
                 <tstamp>
                   <format property="TODAY" pattern="dd-MM-yyyy HH:mm" timezone="Europe/London" /> 
@@ -112,7 +112,7 @@
                 <echo file="${basedir}/target/filter.properties">build.number=${build.number}
 built.on=${TODAY}
                 </echo>
-              </tasks>
+              </target>
             </configuration>
           </execution>
         </executions>

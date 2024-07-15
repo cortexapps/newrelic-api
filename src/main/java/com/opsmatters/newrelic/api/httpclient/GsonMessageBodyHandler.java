@@ -65,6 +65,7 @@ import com.opsmatters.newrelic.api.httpclient.deserializers.graphql.NrqlErrorRes
 import com.opsmatters.newrelic.api.httpclient.deserializers.graphql.NrqlQueryResponseDeserializer;
 import com.opsmatters.newrelic.api.httpclient.deserializers.graphql.NrqlSuccessResponseDeserializer;
 import com.opsmatters.newrelic.api.httpclient.deserializers.graphql.SloDefinitionResponseDeserializer;
+import com.opsmatters.newrelic.api.httpclient.deserializers.graphql.ThirdPartyMetricsResponseDeserializer;
 import com.opsmatters.newrelic.api.httpclient.deserializers.insights.DashboardDeserializer;
 import com.opsmatters.newrelic.api.httpclient.deserializers.insights.DashboardsDeserializer;
 import com.opsmatters.newrelic.api.httpclient.deserializers.labels.LabelDeserializer;
@@ -131,6 +132,7 @@ import com.opsmatters.newrelic.api.model.graphql.NrqlErrorResponse;
 import com.opsmatters.newrelic.api.model.graphql.NrqlQueryResponse;
 import com.opsmatters.newrelic.api.model.graphql.NrqlSuccessResponse;
 import com.opsmatters.newrelic.api.model.graphql.SloDefinitionResponse;
+import com.opsmatters.newrelic.api.model.graphql.ThirdPartyMetricsResponse;
 import com.opsmatters.newrelic.api.model.insights.Dashboard;
 import com.opsmatters.newrelic.api.model.labels.Label;
 import com.opsmatters.newrelic.api.model.metrics.Metric;
@@ -214,6 +216,7 @@ public final class GsonMessageBodyHandler implements MessageBodyWriter<Object>, 
     private static final Type NRQL_ERROR_TYPE = new TypeToken<Collection<NrqlErrorResponse>>(){}.getType();
     private static final Type NRQL_QUERY_TYPE = new TypeToken<Collection<NrqlQueryResponse>>(){}.getType();
     private static final Type SLO_DEFINITION_TYPE = new TypeToken<Collection<SloDefinitionResponse>>(){}.getType();
+    private static final Type THIRD_PARTY_METRICS_RESPONSE = new TypeToken<Collection<ThirdPartyMetricsResponse>>(){}.getType();
 
     private Gson gson;
 
@@ -314,6 +317,10 @@ public final class GsonMessageBodyHandler implements MessageBodyWriter<Object>, 
             builder.registerTypeAdapter(NRQL_QUERY_TYPE, new NrqlQueryResponseDeserializer());
             builder.registerTypeAdapter(SloDefinitionResponse.class, new SloDefinitionResponseDeserializer());
             builder.registerTypeAdapter(SLO_DEFINITION_TYPE, new SloDefinitionResponseDeserializer());
+            builder.registerTypeAdapter(ThirdPartyMetricsResponse.class, new ThirdPartyMetricsResponseDeserializer());
+            builder.registerTypeAdapter(THIRD_PARTY_METRICS_RESPONSE, new ThirdPartyMetricsResponseDeserializer());
+
+
 
             gson = builder.create();
         }
