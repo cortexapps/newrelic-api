@@ -81,6 +81,18 @@ public class GraphQLService extends BaseFluent {
     }
 
     /**
+     * Returns the GraphQL response
+     * @param query The NRQL query to execute
+     * @param timeout The NRQL query execution timeout
+     * @return The query data
+     */
+    public Optional<NrqlQueryResponse> runNrql(int accountId, String query, int timeout)
+    {
+        GraphQLRequest request = GraphQLRequest.from(constructNrqlQueryWithTimeout(accountId, query, timeout));
+        return HTTP.POST("/graphql", request, NRQL_QUERY);
+    }
+
+    /**
      * Returns the SloDefinitionResponse
      * @param newRelicEntityGuid The entity guid to search for
      * @return The query data
@@ -107,6 +119,18 @@ public class GraphQLService extends BaseFluent {
                 "  actor {" +
                 "    account(id: " + accountId + ") {" +
                 "      nrql(query: \"" + query + "\") {" +
+                "        results" +
+                "      }" +
+                "    }" +
+                "  }" +
+                "}";
+    }
+
+    private String constructNrqlQueryWithTimeout(int accountId, String query, int timeout) {
+        return "{" +
+                "  actor {" +
+                "    account(id: " + accountId + ") {" +
+                "      nrql(query: \"" + query + "\", timeout: " + timeout + ") {" +
                 "        results" +
                 "      }" +
                 "    }" +
