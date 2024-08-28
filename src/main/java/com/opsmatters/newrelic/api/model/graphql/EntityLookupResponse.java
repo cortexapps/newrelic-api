@@ -272,11 +272,11 @@ public class EntityLookupResponse {
         private Double responseTimeAverage;
         private Double throughput;
 
-        public Double getApdexTarget() {
+        public Double getApdexScore() {
             return apdexScore;
         }
 
-        public void setApdexTarget(Double apdexScore) {
+        public void setApdexScore(Double apdexScore) {
             this.apdexScore = apdexScore;
         }
 
