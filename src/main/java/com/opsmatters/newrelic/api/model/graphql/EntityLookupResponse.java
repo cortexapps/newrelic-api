@@ -157,6 +157,8 @@ public class EntityLookupResponse {
         private List<EmbeddedEntityTag> tags;
         private Long accountId;
         private Long applicationId;
+        private Settings settings;
+        private ApmSummary apmSummary;
 
         public String getGuid() {
             return guid;
@@ -185,6 +187,22 @@ public class EntityLookupResponse {
         public Long getApplicationId() { return applicationId; }
 
         public void setApplicationId(Long applicationId) { this.applicationId = applicationId; }
+
+        public Settings getSettings() {
+            return settings;
+        }
+
+        public void setSettings(Settings settings) {
+            this.settings = settings;
+        }
+
+        public ApmSummary getApmSummary() {
+            return apmSummary;
+        }
+
+        public void setApmSummary(ApmSummary apmSummary) {
+            this.apmSummary = apmSummary;
+        }
     }
 
     public class EmbeddedEntityTag {
@@ -231,5 +249,76 @@ public class EntityLookupResponse {
         public void setNextCursor(String nextCursor) {
             this.nextCursor = nextCursor;
         }
+    }
+
+    public class Settings {
+        private Double apdexTarget;
+
+        public Double getApdexTarget() {
+            return apdexTarget;
+        }
+
+        public void setApdexTarget(Double apdexTarget) {
+            this.apdexTarget = apdexTarget;
+        }
+
+    }
+
+    public class ApmSummary {
+        private Double apdexScore;
+        private Double errorRate;
+        private Integer hostCount;
+        private Integer instanceCount;
+        private Double responseTimeAverage;
+        private Double throughput;
+
+        public Double getApdexTarget() {
+            return apdexScore;
+        }
+
+        public void setApdexTarget(Double apdexScore) {
+            this.apdexScore = apdexScore;
+        }
+
+        public Double getErrorRate() {
+            return errorRate;
+        }
+
+        public void setErrorRate(Double errorRate) {
+            this.errorRate = errorRate;
+        }
+
+        public Integer getHostCount() {
+            return hostCount;
+        }
+
+        public void setHostCount(Integer hostCount) {
+            this.hostCount = hostCount;
+        }
+
+        public Integer getInstanceCount() {
+            return instanceCount;
+        }
+
+        public void setInstanceCount(Integer instanceCount) {
+            this.instanceCount = instanceCount;
+        }
+
+        public Double getResponseTimeAverage() {
+            return responseTimeAverage;
+        }
+
+        public void setResponseTimeAverage(Double responseTimeAverage) {
+            this.responseTimeAverage = responseTimeAverage;
+        }
+
+        public Double getThroughput() {
+            return throughput;
+        }
+
+        public void setThroughput(Double throughput) {
+            this.throughput = throughput;
+        }
+
     }
 }
