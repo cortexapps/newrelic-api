@@ -188,6 +188,10 @@ public class GraphQLService extends BaseFluent {
         return "{" +
                "  actor {" +
                "    entities(guids: \"" + guid + "\") {" +
+               "      tags {" +
+               "        key" +
+               "        values" +
+               "      }" +
                "      serviceLevel {" +
                "        indicators {" +
                "          guid" +
