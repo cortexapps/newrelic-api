@@ -30,13 +30,43 @@ public class SloDefinitionResponse {
 
     public class Entity {
         private ServiceLevel serviceLevel;
+        private List<Tag> tags;
 
         public ServiceLevel getServiceLevel() {
             return serviceLevel;
         }
 
+        public List<Tag> getTags() {
+            return tags;
+        }
+
         public void setServiceLevel(ServiceLevel serviceLevel) {
             this.serviceLevel = serviceLevel;
+        }
+
+        public void setTags(List<Tag> tags) {
+            this.tags = tags;
+        }
+    }
+
+    public class Tag {
+        private String key;
+        private List<String> values;
+
+        public String getKey() {
+            return key;
+        }
+
+        public void setKey(String key) {
+            this.key = key;
+        }
+
+        public List<String> getValues() {
+            return values;
+        }
+
+        public void setValues(List<String> values) {
+            this.values = values;
         }
     }
 
