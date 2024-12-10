@@ -30,10 +30,10 @@ public class NrqlQueryResponseDeserializer implements JsonDeserializer<NrqlQuery
         JsonObject obj = element.getAsJsonObject();
         JsonElement data = obj.get("data");
         JsonElement errors = obj.get("errors");
-        if(data != null && data.isJsonObject())
-            return gson.fromJson(data, NrqlSuccessResponse.class);
-        else if(errors != null && obj.isJsonObject()) {
+        if(errors != null && obj.isJsonObject()) {
             return gson.fromJson(obj, NrqlErrorResponse.class);
+        } else if(data != null && data.isJsonObject()) {
+            return gson.fromJson(data, NrqlSuccessResponse.class);
         }
         return null;
     }
