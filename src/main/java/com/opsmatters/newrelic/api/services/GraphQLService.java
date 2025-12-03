@@ -192,6 +192,7 @@ public class GraphQLService extends BaseFluent {
                "        key" +
                "        values" +
                "      }" +
+               "      accountId" +
                "      serviceLevel {" +
                "        indicators {" +
                "          guid" +

@@ -31,6 +31,7 @@ public class SloDefinitionResponse {
     public class Entity {
         private ServiceLevel serviceLevel;
         private List<Tag> tags;
+        private Long accountId;
 
         public ServiceLevel getServiceLevel() {
             return serviceLevel;
@@ -40,6 +41,8 @@ public class SloDefinitionResponse {
             return tags;
         }
 
+        public Long getAccountId() { return accountId; }
+
         public void setServiceLevel(ServiceLevel serviceLevel) {
             this.serviceLevel = serviceLevel;
         }
@@ -47,6 +50,8 @@ public class SloDefinitionResponse {
         public void setTags(List<Tag> tags) {
             this.tags = tags;
         }
+
+        public void setAccountId(Long accountId) { this.accountId = accountId; }
     }
 
     public class Tag {
